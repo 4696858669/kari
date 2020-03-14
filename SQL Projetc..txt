@@ -1,0 +1,46 @@
+
+                             --  HUMAN RESOURCES
+
+            --1.Which employee gets paid the highest amount of salary?
+
+SELECT DISTINCT first_name,last_name,salary
+FROM hr.employees a
+WHERE 1 >= (select count (distinct salary)
+                    from hr.employees b
+                    where b.salary >= a.salary)
+ORDER BY salary desc;
+
+            --2. find the second highest paid employee.
+
+SELECT DISTINCT first_name,last_name,salary
+FROM hr.employees a
+WHERE 2 = (select count (distinct salary)
+                    from hr.employees b
+                    where b.salary >= a.salary)
+ORDER BY salary desc; 
+
+
+
+                         --ORDER ENTRY
+           
+                --1.which employee made the highest sales?
+ 
+SELECT DISTINCT first_name,last_name,salary
+FROM hr.employees a
+inner join OE.ORDERS O on O.SALES_REP_ID=a.employee_id
+WHERE employee_id 
+ 
+                  
+
+                        --SALES HISTORY
+  
+        --1.Which product has the highest SALES ON WEEK ENDING 22-FEB-98 ?
+
+SELECT DISTINCT WEEK_ENDING_DAY,PROD_SUBCATEGORY, DOLLARS  
+FROM SH.FWEEK_PSCAT_SALES_MV a
+WHERE 1 >= (SELECT COUNT (distinct DOLLARS )
+                    from SH.FWEEK_PSCAT_SALES_MV b
+                    where b.DOLLARS  >= a.DOLLARS )
+AND  WEEK_ENDING_DAY ='22-FEB-98'
+ORDER BY DOLLARS  desc;
+  
