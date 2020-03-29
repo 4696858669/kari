@@ -1,0 +1,16 @@
+Task 1
+
+ls /etc > file1.txt
+
+
+
+ls /run > file2.txt
+
+Task 2
+
+cat file1.txt file2.txt |tee unsotred.txt | sort -r > reversed.txt
+
+How long it Took You to Complete The Assignment in Minutes (estimate)
+
+25 minutes
+
